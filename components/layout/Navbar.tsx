@@ -80,7 +80,7 @@ export default function Navbar() {
                   className="mt-2"
                   asChild
                 >
-                  <a href="/cv/cv.pdf" download>
+                  <a href="/cv/CV_Yael.pdf" download>
                     <FiDownload className="w-4 h-4 mr-2" />
                     CV
                   </a>
@@ -111,7 +111,7 @@ export default function Navbar() {
                   className="mt-2"
                   asChild
                 >
-                  <a href="/cv/cv.pdf" download>
+                  <a href="/cv/CV_Yael.pdf" download>
                     <FiDownload className="w-4 h-4 mr-2" />
                     CV
                   </a>
@@ -122,7 +122,7 @@ export default function Navbar() {
 
           {/* Desktop CV Button */}
           <Button variant="cv" size="sm" className="hidden md:inline-flex" asChild>
-            <a href="/cv/cv.pdf" download>
+            <a href="/cv/CV_Yael.pdf" download>
               <FiDownload className="w-4 h-4 mr-2" />
               CV
             </a>
