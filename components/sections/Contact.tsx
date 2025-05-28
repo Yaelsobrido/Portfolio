@@ -16,17 +16,30 @@ export default function Contact() {
             peux vous aider à le concrétiser.
           </p>
           <div className="flex flex-col sm:flex-row gap-4  mb-12">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-              <Mail className="w-5 h-5 mr-2" />
-              andriantsialo.yael@email.com
+            <Button
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700"
+              asChild
+            >
+              <a href="mailto:yaelsobrido23@gmail.com">
+                <Mail className="w-5 h-5 mr-2" />
+                yaelsobrido23@gmail.com
+              </a>
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-slate-600 text-slate-300 hover:bg-slate-800"
+              asChild
             >
-              <Linkedin className="w-5 h-5 mr-2" />
-              LinkedIn
+              <a
+                href="https://www.linkedin.com/in/ya%C3%ABl-sobrido-andriantsialo-0b8a05263/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin className="w-5 h-5 mr-2" />
+                LinkedIn
+              </a>
             </Button>
           </div>
           <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 text-slate-400">

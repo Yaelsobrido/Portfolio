@@ -36,9 +36,14 @@ export default function About() {
 
             {/* Boutons */}
             <div className="flex justify-center lg:justify-start space-x-4">
-              <Button className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto">
-                <Mail className="w-4 h-4 mr-2" />
-                Me contacter
+              <Button
+                className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto"
+                asChild
+              >
+                <a href="mailto:yaelsobrido23@gmail.com">
+                  <Mail className="w-4 h-4 mr-2" />
+                  Me contacter
+                </a>
               </Button>
               <Button
                 variant="outline"
