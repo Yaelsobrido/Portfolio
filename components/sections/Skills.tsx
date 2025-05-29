@@ -2,17 +2,40 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Code2, Database, Server, Cloud, Zap } from "lucide-react";
+import {
+	Code2,
+	Database,
+	Server,
+	Braces,
+	Globe,
+	GitBranch,
+	Layout,
+	Library,
+} from "lucide-react";
 
 const skills = [
-	{ name: "Node.js", level: 95, icon: <Server className="w-5 h-5" /> },
-	{ name: "Python", level: 90, icon: <Code2 className="w-5 h-5" /> },
-	{ name: "PostgreSQL", level: 88, icon: <Database className="w-5 h-5" /> },
-	{ name: "MongoDB", level: 85, icon: <Database className="w-5 h-5" /> },
-	{ name: "Docker", level: 82, icon: <Cloud className="w-5 h-5" /> },
-	{ name: "AWS", level: 80, icon: <Cloud className="w-5 h-5" /> },
-	{ name: "Redis", level: 78, icon: <Zap className="w-5 h-5" /> },
-	{ name: "GraphQL", level: 75, icon: <Code2 className="w-5 h-5" /> },
+	// Langages de programmation
+	{ name: "JavaScript", level: 80, icon: <Braces className="w-5 h-5" /> },
+	{ name: "Python", level: 80 , icon: <Code2 className="w-5 h-5" /> },
+	{ name: "PHP", level: 85, icon: <Code2 className="w-5 h-5" /> },
+
+	// Frontend
+	{ name: "HTML/CSS", level: 90, icon: <Globe className="w-5 h-5" /> },
+	{ name: "React.js", level: 85, icon: <Code2 className="w-5 h-5" /> },
+	{ name: "Next.js", level: 80, icon: <Server className="w-5 h-5" /> },
+
+	// Backend & Framework
+	{ name: "Node.js", level: 88, icon: <Server className="w-5 h-5" /> },
+	{ name: "Laravel", level: 90, icon: <Library className="w-5 h-5" /> },
+
+	// Bases de données
+	{ name: "MySQL", level: 85, icon: <Database className="w-5 h-5" /> },
+	{ name: "PostgreSQL", level: 85, icon: <Database className="w-5 h-5" /> },
+	{ name: "MongoDB", level: 80, icon: <Database className="w-5 h-5" /> },
+
+	// Outils & Méthodologies
+	{ name: "Github/Gitlab", level: 88, icon: <GitBranch className="w-5 h-5" /> },
+	{ name: "UML/Merise", level: 85, icon: <Layout className="w-5 h-5" /> },
 ];
 
 export default function Skills() {
