@@ -25,6 +25,7 @@ export default function Skills() {
 
 		// Frontend
 		{ name: "HTML/CSS", level: 90, icon: <Globe className="w-5 h-5" /> },
+		{ name: "Tailwind CSS", level: 85, icon: <Globe className="w-5 h-5" /> },
 		{ name: "React.js", level: 85, icon: <Code2 className="w-5 h-5" /> },
 		{ name: "Next.js", level: 80, icon: <Server className="w-5 h-5" /> },
 
