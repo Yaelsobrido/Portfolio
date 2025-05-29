@@ -3,8 +3,11 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { MapPin, Calendar, Mail, Github } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function About() {
+  const { t } = useLanguage();
+
   return (
     <section className="min-h-[calc(100vh-73px)] flex items-center justify-center px-4 py-10 md:px-6">
       <div className="container mx-auto max-w-6xl">
@@ -19,19 +22,20 @@ export default function About() {
                   Sobrido Yaël
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-slate-300">Développeur Back-end Passionné</p>
+              <p className="text-lg md:text-xl text-slate-300">
+                {t("about.role")}
+              </p>
               <p className="text-base md:text-lg text-slate-400 leading-relaxed">
-                Spécialisé dans la création d'architectures robustes et scalables.
-                Expert en APIs REST, microservices et optimisation de performances.
+                {t("about.specialization")}
               </p>
             </div>
 
             {/* Localisation & dispo */}
             <div className="flex items-center justify-center lg:justify-start space-x-4 text-slate-400">
               <MapPin className="w-5 h-5" />
-              <span>Madagascar</span>
+              <span>{t("about.location")}</span>
               <Calendar className="w-5 h-5 ml-4" />
-              <span>Disponible</span>
+              <span>{t("about.status")}</span>
             </div>
 
             {/* Boutons */}
@@ -42,7 +46,7 @@ export default function About() {
               >
                 <a href="mailto:yaelsobrido23@gmail.com">
                   <Mail className="w-4 h-4 mr-2" />
-                  Me contacter
+                  {t("about.contact")}
                 </a>
               </Button>
               <Button

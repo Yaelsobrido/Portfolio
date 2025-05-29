@@ -2,18 +2,20 @@
 
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Terminal, Cpu, Shield } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
+
   return (
     <section className="min-h-[calc(100vh-73px)] flex px-4 py-10 md:px-6 pt-28">
       <div className="container mx-auto max-w-6xl">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
-            Travaillons Ensemble
+            {t("contact.title")}
           </h2>
           <p className="text-base md:text-lg text-slate-400 mb-8">
-            Vous avez un projet back-end ambitieux ? Discutons de la façon dont je
-            peux vous aider à le concrétiser.
+            {t("contact.description")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4  mb-12">
             <Button
@@ -45,15 +47,15 @@ export default function Contact() {
           <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 text-slate-400">
             <div className="flex items-center space-x-2">
               <Terminal className="w-5 h-5" />
-              <span>Code propre</span>
+              <span>{t("contact.features.clean")}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Cpu className="w-5 h-5" />
-              <span>Performance</span>
+              <span>{t("contact.features.performance")}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Shield className="w-5 h-5" />
-              <span>Sécurité</span>
+              <span>{t("contact.features.security")}</span>
             </div>
           </div>
         </div>

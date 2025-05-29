@@ -5,17 +5,20 @@ import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { FiDownload, FiMenu, FiX } from "react-icons/fi";
 import { useState } from "react";
+import LanguageSelector from "./LanguageSelector";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { t } = useLanguage();
 
   const navigation = [
-    { name: "À propos", href: "/about" },
-    { name: "Compétences", href: "/competences" },
-    { name: "Projets", href: "/projets" },
-    { name: "Expérience", href: "/experience" },
-    { name: "Contact", href: "/contact" },
+    { name: t("nav.about"), href: "/about" },
+    { name: t("nav.skills"), href: "/competences" },
+    { name: t("nav.projects"), href: "/projets" },
+    { name: t("nav.experience"), href: "/experience" },
+    { name: t("nav.contact"), href: "/contact" },
   ];
 
   return (
@@ -29,13 +32,16 @@ export default function Navbar() {
             ASY.dev
           </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="p-2 text-slate-400 hover:text-white md:hidden"
-          >
-            {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-          </button>
+          {/* Mobile Controls */}
+          <div className="flex items-center space-x-4 md:hidden">
+            <LanguageSelector />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-slate-400 hover:text-white"
+            >
+              {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </button>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
@@ -58,7 +64,18 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Desktop CV & Language Controls */}
+          <div className="hidden md:flex items-center space-x-4">
+            <LanguageSelector />
+            <Button variant="cv" size="sm" className="hidden md:inline-flex" asChild>
+              <a href="/cv/CV_Yael.pdf" download>
+                <FiDownload className="w-4 h-4 mr-2" />
+                CV
+              </a>
+            </Button>
+          </div>
+
+          {/* Mobile Navigation Menu */}
           {isMenuOpen && (
             <div className="absolute top-[73px] left-0 right-0 bg-slate-900/95 border-b border-slate-700 md:hidden">
               <div className="flex flex-col items-center py-6 space-y-4">
@@ -119,14 +136,6 @@ export default function Navbar() {
               </div>
             </div>
           )}
-
-          {/* Desktop CV Button */}
-          <Button variant="cv" size="sm" className="hidden md:inline-flex" asChild>
-            <a href="/cv/CV_Yael.pdf" download>
-              <FiDownload className="w-4 h-4 mr-2" />
-              CV
-            </a>
-          </Button>
         </nav>
       </div>
     </header>
