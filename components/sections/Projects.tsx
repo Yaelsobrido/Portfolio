@@ -11,13 +11,14 @@ import {
 } from "react-icons/fa";
 import { 
   SiMysql, SiTailwindcss, SiNextdotjs, 
-  SiBootstrap 
+  SiBootstrap , SiThreedotjs
 } from "react-icons/si";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const techIcons: Record<string, React.ReactElement> = {
   "React.js": <FaReact className="mr-1" />,
   "Next.js": <SiNextdotjs className="mr-1" />,
+   "Three.js":    <SiThreedotjs className="mr-1" />,
   "TailwindCSS": <SiTailwindcss className="mr-1" />,
   "Laravel": <FaLaravel className="mr-1" />,
   "MySQL": <SiMysql className="mr-1" />,
@@ -59,7 +60,7 @@ const projects = [
       fr: "Marketplace web dédiée à la vente de modèles 3D de mobilier (tables, chaises, etc.), optimisés pour l'architecture et la modélisation. Gestion des fichiers 3D, prévisualisation interactive et système complet de commande.",
       en: "Web marketplace dedicated to selling 3D furniture models (tables, chairs, etc.), optimized for architecture and modeling. 3D file management, interactive preview and complete ordering system."
     },
-		tech: ["Next.js", "TailwindCSS", "Laravel", "MySQL"],
+		tech: ["Next.js","Three.js", "TailwindCSS", "Laravel", "MySQL"],
 		status: {
       fr: "Terminé",
       en: "Completed"
