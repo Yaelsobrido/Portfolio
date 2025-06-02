@@ -70,6 +70,7 @@ const translations = {
     "projects.technologies": "Technologies utilisées",
     "projects.inProgress": "En cours",
     "projects.completed": "Terminé",
+    "projects.comingSoon": "Bientôt disponible",
   },
   en: {
     // Navigation
@@ -130,6 +131,7 @@ const translations = {
     "projects.technologies": "Technologies used",
     "projects.inProgress": "In Progress",
     "projects.completed": "Completed",
+    "projects.comingSoon": "Coming Soon",
   }
 };
 
