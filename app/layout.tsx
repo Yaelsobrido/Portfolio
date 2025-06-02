@@ -1,7 +1,6 @@
 "use client";
 
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import { useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import "./globals.css";
