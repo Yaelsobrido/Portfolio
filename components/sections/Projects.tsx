@@ -48,13 +48,13 @@ const projects = [
 			"Marketplace web dédiée à la vente de modèles 3D de mobilier (tables, chaises, etc.), optimisés pour l’architecture et la modélisation. Gestion des fichiers 3D, prévisualisation interactive et système complet de commande.",
 		tech: ["Next.js", "TailwindCSS", "Laravel", "MySQL"],
 		status: "Terminé",
-		link: "#",
+		link: "https://cn.ebax.ca/fr",
 		image: "/images/projects/cicd.jpeg",
 	},
 	{
 		title: "BRINE University",
 		description:
-			"Site web personnel développé avec React et Bootstrap, incluant un système de traduction et une interface responsive moderne.",
+			"Plateforme de gestion universitaire complète : inscription des étudiants, suivi académique, gestion des filières, niveaux, cours, emplois du temps, examens, notes et accès multi-rôles.",
 		tech: ["React.js", "Bootstrap", "Laravel", "MySQL"],
 		status: "Production",
 		link: "https://www.brine.pro",
