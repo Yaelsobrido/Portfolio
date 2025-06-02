@@ -75,8 +75,8 @@ const projects = [
     },
 		tech: ["React.js", "Bootstrap", "Laravel", "MySQL"],
 		status: {
-      fr: "Production",
-      en: "Production"
+      fr: "Terminé",
+      en: "Completed"
     },
 		link: "https://www.brine.pro",
 		image: "/images/projects/portfolio.jpg",
