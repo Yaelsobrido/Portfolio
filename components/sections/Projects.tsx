@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Lock } from "lucide-react";
 import { 
   FaReact, FaLaravel, 
 } from "react-icons/fa";
@@ -26,6 +26,34 @@ const techIcons: Record<string, React.ReactElement> = {
 };
 
 const projects = [
+	{
+		title: "ExamenPro",
+		description: {
+      fr: "Application de gestion d'examens en ligne pour les établissements éducatifs : création dynamique de questions via extraction de texte, gestion des résultats, interface d'administration complète et contrôle précis des rôles.",
+      en: "Online exam management application for educational institutions: dynamic question creation via text extraction, results management, comprehensive administration dashboard, and precise role control."
+    },
+		tech: ["Laravel", "TailwindCSS", "MySQL"],
+		status: {
+      fr: "En cours",
+      en: "In Progress"
+    },
+		link: "#",
+		image: "/images/projects/examenpro.jpg",
+	},
+	{
+		title: "UnitCRM",
+		description: {
+      fr: "Solution CRM complète et modulaire conçue avec Laravel : gestion des clients, projets, tâches, facturation, module de paie, API REST intégrée et système de paiement et notifications.",
+      en: "Comprehensive and modular CRM solution built with Laravel: client, project, and task management, billing, payroll module, integrated REST API, and payment/notification systems."
+    },
+		tech: ["Laravel", "TailwindCSS", "MySQL"],
+		status: {
+      fr: "Dépôt privé",
+      en: "Private Repo"
+    },
+		link: "#",
+		image: "/images/projects/unitcrm.jpg",
+	},
 	{
 		title: "MARCIA",
 		description: {
@@ -84,6 +112,20 @@ const projects = [
 	},
 ];
 
+const getStatusColor = (statusFr: string) => {
+  switch (statusFr) {
+    case "En cours":
+      return "bg-amber-500/80 text-white border-amber-400";
+    case "Terminé":
+      return "bg-emerald-500/80 text-white border-emerald-400";
+    case "Dépôt privé":
+    case "Privé":
+      return "bg-slate-700/85 text-slate-200 border-slate-600";
+    default:
+      return "bg-blue-500/80 text-white border-blue-400";
+  }
+};
+
 export default function Projects() {
   const { language, t } = useLanguage();
 
@@ -109,11 +151,10 @@ export default function Projects() {
 										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 									/>
 									<div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
-									<Badge variant={
-                    project.status[language] === "Production" ? "default"
-                      : project.status.fr === "En cours" ? "secondary"
-                        : "outline"
-                  } className="absolute top-4 right-4 backdrop-blur-md shadow-lg bg-blue-500/80 text-white border-blue-400 font-medium">
+									<Badge 
+										variant="outline" 
+										className={`absolute top-4 right-4 backdrop-blur-md shadow-lg font-medium ${getStatusColor(project.status.fr)}`}
+									>
 										{project.status[language]}
 									</Badge>
 								</div>
@@ -148,6 +189,15 @@ export default function Projects() {
 										>
 											<ExternalLink className="w-4 h-4 mr-2" />
 											{t("projects.comingSoon")}
+										</Button>
+									) : project.status.fr === "Dépôt privé" || project.status.fr === "Privé" ? (
+										<Button
+											variant="ghost"
+											className="w-full justify-center text-slate-500 cursor-not-allowed opacity-70"
+											disabled
+										>
+											<Lock className="w-4 h-4 mr-2" />
+											{t("projects.privateCode")}
 										</Button>
 									) : (
 										<a href={project.link} target="_blank" rel="noopener noreferrer">

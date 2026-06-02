@@ -9,7 +9,7 @@ export default function About() {
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-[calc(100vh-73px)] flex items-center justify-center px-4 py-10 md:px-6">
+    <section className="min-h-[calc(100vh-73px)] flex items-center justify-center px-4 py-10 md:px-6 pt-28">
       <div className="container mx-auto max-w-6xl">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Texte */}

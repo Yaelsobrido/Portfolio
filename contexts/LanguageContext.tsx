@@ -71,6 +71,7 @@ const translations = {
     "projects.inProgress": "En cours",
     "projects.completed": "Terminé",
     "projects.comingSoon": "Bientôt disponible",
+    "projects.privateCode": "Code source privé",
   },
   en: {
     // Navigation
@@ -107,7 +108,7 @@ const translations = {
     "experience.intern.company": "UN-IT",
     "experience.intern.period": "2022",
     "experience.intern.description": "Web development internship, team project participation, learning best practices and development methodologies.",
-
+ 
     // Contact section
     "contact.title": "Let's Work Together",
     "contact.heading": "Contact Me",
@@ -122,7 +123,7 @@ const translations = {
     "contact.features.clean": "Clean Code",
     "contact.features.performance": "Performance",
     "contact.features.security": "Security",
-
+ 
     // Projects section
     "projects.title": "My Projects",
     "projects.subtitle": "A selection of my recent work",
@@ -132,6 +133,7 @@ const translations = {
     "projects.inProgress": "In Progress",
     "projects.completed": "Completed",
     "projects.comingSoon": "Coming Soon",
+    "projects.privateCode": "Private source code",
   }
 };
 

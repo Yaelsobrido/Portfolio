@@ -2,11 +2,27 @@ export interface Project {
   title: string;
   description: string;
   tech: string[];
-  status: "Production" | "En cours" | "Terminé";
+  status: "Production" | "En cours" | "Terminé" | "Dépôt privé";
   link: string;
 }
 
 export const projects: Project[] = [
+  {
+    title: "ExamenPro",
+    description:
+      "Application de gestion d'examens en ligne pour les établissements éducatifs : création dynamique de questions via extraction de texte, gestion des résultats, interface d'administration complète et contrôle précis des rôles.",
+    tech: ["Laravel", "TailwindCSS", "MySQL"],
+    status: "En cours",
+    link: "#",
+  },
+  {
+    title: "UnitCRM",
+    description:
+      "Solution CRM complète et modulaire conçue avec Laravel : gestion des clients, projets, tâches, facturation, module de paie, API REST intégrée et système de paiement et notifications.",
+    tech: ["Laravel", "TailwindCSS", "MySQL"],
+    status: "Dépôt privé",
+    link: "#",
+  },
   {
     title: "API E-commerce Microservices",
     description:
