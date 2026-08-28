@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { FiDownload, FiMenu, FiX } from "react-icons/fi";
 import { useState } from "react";
 import LanguageSelector from "./LanguageSelector";
+import ThemeToggle from "./ThemeToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
@@ -28,22 +29,23 @@ export default function Navbar() {
   };
 
   return (
-    <header className="w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-700 fixed top-0 left-0 right-0 z-[999]">
+    <header className="w-full bg-void/70 backdrop-blur-md border-b border-hairline fixed top-0 left-0 right-0 z-[999]">
       <div className="container mx-auto px-4 py-4 md:px-6">
         <nav className="flex items-center justify-between">
           <Link
             href="/about"
-            className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+            className="text-xl md:text-2xl font-mono font-bold tracking-tight text-ink"
           >
-            ASY.dev
+            <span className="text-accent">/</span>ASY<span className="text-ink-faint">.dev</span>
           </Link>
 
           {/* Mobile Controls */}
-          <div className="flex items-center space-x-4 md:hidden">
+          <div className="flex items-center space-x-3 md:hidden">
             <LanguageSelector />
+            <ThemeToggle />
             <button
               onClick={() => toggleMenu(!isMenuOpen)}
-              className="p-2 text-slate-400 hover:text-white"
+              className="p-2 text-ink-faint hover:text-ink"
             >
               {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
@@ -57,12 +59,12 @@ export default function Navbar() {
                 href={item.href}
                 className={`uppercase text-sm tracking-wider relative transition-colors duration-300 cursor-pointer
                   before:content-[''] before:absolute before:bottom-[-4px] before:left-0 before:w-full before:h-[2px]
-                  before:bg-blue-400 before:origin-right before:scale-x-0 before:transition-transform before:duration-300
+                  before:bg-accent before:origin-right before:scale-x-0 before:transition-transform before:duration-300
                   hover:before:origin-left hover:before:scale-x-100
                   ${
                     pathname === item.href
-                      ? "text-blue-400 before:scale-x-100"
-                      : "text-slate-300 hover:text-white"
+                      ? "text-accent before:scale-x-100"
+                      : "text-ink-dim hover:text-ink"
                   }`}
               >
                 {item.name}
@@ -71,8 +73,9 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CV & Language Controls */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-3">
             <LanguageSelector />
+            <ThemeToggle />
             <Button variant="cv" size="sm" className="hidden md:inline-flex" asChild>
               <a href="/cv/CV_Yael.pdf" download>
                 <FiDownload className="w-4 h-4 mr-2" />
@@ -83,7 +86,7 @@ export default function Navbar() {
 
           {/* Mobile Navigation Menu */}
           {isMenuOpen && (
-            <div className="absolute top-[73px] left-0 right-0 bg-slate-900/95 border-b border-slate-700 md:hidden">
+            <div className="absolute top-[73px] left-0 right-0 bg-void/95 border-b border-hairline md:hidden">
               <div className="flex flex-col items-center py-6 space-y-4">
                 {navigation.map((item) => (
                   <Link
@@ -91,7 +94,7 @@ export default function Navbar() {
                     href={item.href}
                     onClick={() => toggleMenu(false)}
                     className={`text-sm uppercase tracking-wider px-4 py-2 w-full text-center transition-colors
-                      ${pathname === item.href ? "text-blue-400" : "text-slate-300 hover:text-white"}`}
+                      ${pathname === item.href ? "text-accent" : "text-ink-dim hover:text-ink"}`}
                   >
                     {item.name}
                   </Link>
@@ -115,7 +118,7 @@ export default function Navbar() {
           {/* Mobile Menu Overlay */}
           {isMenuOpen && (
             <div
-              className="md:hidden fixed inset-0 top-[73px] bg-slate-900/95 backdrop-blur-sm z-[998]"
+              className="md:hidden fixed inset-0 top-[73px] bg-void/95 backdrop-blur-sm z-[998]"
               onClick={() => toggleMenu(false)}
             >
               <div className="flex flex-col items-center py-6 space-y-4">
@@ -125,7 +128,7 @@ export default function Navbar() {
                     href={item.href}
                     onClick={() => toggleMenu(false)}
                     className={`text-sm uppercase tracking-wider px-4 py-2 w-full text-center transition-colors
-                      ${pathname === item.href ? "text-blue-400" : "text-slate-300 hover:text-white"}`}
+                      ${pathname === item.href ? "text-accent" : "text-ink-dim hover:text-ink"}`}
                   >
                     {item.name}
                   </Link>

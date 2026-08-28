@@ -4,16 +4,18 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Briefcase } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import Reveal from "@/components/effects/Reveal";
+import { Timeline, TimelineItem, TimelineMarker } from "@/components/common/Timeline";
 
 export default function Experience() {
 	const { t } = useLanguage();
 
 	const experience = [
 		{
-			title: t("experience.intern.title"),
-			company: t("experience.intern.company"),
-			period: t("experience.intern.period"),
-			description: t("experience.intern.description"),
+			title: t("experience.dev.title"),
+			company: t("experience.dev.company"),
+			period: t("experience.dev.period"),
+			description: t("experience.dev.description"),
 		},
 		{
 			title: t("experience.integrator.title"),
@@ -22,51 +24,50 @@ export default function Experience() {
 			description: t("experience.integrator.description"),
 		},
 		{
-			title: t("experience.dev.title"),
-			company: t("experience.dev.company"),
-			period: t("experience.dev.period"),
-			description: t("experience.dev.description"),
+			title: t("experience.intern.title"),
+			company: t("experience.intern.company"),
+			period: t("experience.intern.period"),
+			description: t("experience.intern.description"),
 		},
 	];
 
 	return (
-		<section className="min-h-[calc(100vh-73px)] flex px-4 py-10 md:px-6 bg-slate-800/50 pt-28">
-			<div className="container mx-auto max-w-6xl">
-				<h2 className="text-3xl md:text-4xl font-bold text-white mb-12">
-					{t("experience.title")}
-				</h2>
-				<div className="space-y-6 md:space-y-8">
+		<section className="min-h-[calc(100vh-73px)] flex px-4 py-16 md:px-6 pt-28">
+			<div className="container mx-auto max-w-4xl">
+				<Reveal className="mb-12">
+					<p className="font-mono text-sm text-accent tracking-widest">03 — PATH</p>
+					<h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mt-2">
+						{t("experience.title")}
+					</h2>
+				</Reveal>
+
+				<Timeline>
 					{experience.map((exp, i) => (
-						<Card key={i} className="bg-slate-900/50 border-slate-700">
-							<CardContent className="p-8">
-								<div className="flex items-start space-x-4">
-									<div className="bg-blue-600 p-3 rounded-lg">
-										<Briefcase className="w-6 h-6 text-white" />
+						<TimelineItem key={i} delay={i * 90}>
+							<TimelineMarker>
+								<Briefcase className="w-5 h-5 md:w-6 md:h-6" />
+							</TimelineMarker>
+
+							<Card className="bg-void/60 border-hairline backdrop-blur-sm">
+								<CardContent className="p-6 md:p-8">
+									<div className="flex flex-col lg:flex-row lg:justify-between mb-2 gap-2">
+										<h3 className="text-xl font-semibold text-ink">{exp.title}</h3>
+										<Badge
+											variant="outline"
+											className="w-fit border-accent/40 text-accent font-mono"
+										>
+											{exp.period}
+										</Badge>
 									</div>
-									<div className="flex-1">
-										<div className="flex flex-col lg:flex-row lg:justify-between mb-2">
-											<h3 className="text-xl font-semibold text-white">
-												{exp.title}
-											</h3>
-											<Badge
-												variant="outline"
-												className="border-blue-400 text-blue-400"
-											>
-												{exp.period}
-											</Badge>
-										</div>
-										<p className="text-blue-400 font-medium mb-3">
-											{exp.company}
-										</p>
-										<p className="text-slate-400">
-											{exp.description}
-										</p>
-									</div>
-								</div>
-							</CardContent>
-						</Card>
+									<p className="text-accent font-medium mb-3 font-mono text-sm">
+										{exp.company}
+									</p>
+									<p className="text-ink-faint leading-relaxed">{exp.description}</p>
+								</CardContent>
+							</Card>
+						</TimelineItem>
 					))}
-				</div>
+				</Timeline>
 			</div>
 		</section>
 	);

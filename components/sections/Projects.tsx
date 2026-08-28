@@ -14,6 +14,9 @@ import {
   SiBootstrap , SiThreedotjs
 } from "react-icons/si";
 import { useLanguage } from "@/contexts/LanguageContext";
+import Reveal from "@/components/effects/Reveal";
+import TiltCard from "@/components/effects/TiltCard";
+import ScrollCard from "@/components/effects/ScrollCard";
 
 const techIcons: Record<string, React.ReactElement> = {
   "React.js": <FaReact className="mr-1" />,
@@ -115,14 +118,14 @@ const projects = [
 const getStatusColor = (statusFr: string) => {
   switch (statusFr) {
     case "En cours":
-      return "bg-amber-500/80 text-white border-amber-400";
+      return "bg-amber-400/15 text-amber-300 border-amber-400/40";
     case "Terminé":
-      return "bg-emerald-500/80 text-white border-emerald-400";
+      return "bg-accent/15 text-accent border-accent/40";
     case "Dépôt privé":
     case "Privé":
-      return "bg-slate-700/85 text-slate-200 border-slate-600";
+      return "bg-surface-2 text-ink-dim border-hairline";
     default:
-      return "bg-blue-500/80 text-white border-blue-400";
+      return "bg-accent-2/15 text-[oklch(0.78_0.16_350)] border-accent-2/40";
   }
 };
 
@@ -130,19 +133,24 @@ export default function Projects() {
   const { language, t } = useLanguage();
 
 	return (
-		<section className="min-h-[calc(100vh-73px)] flex px-4 py-10 md:px-6 bg-slate-800/50 pt-28">
+		<section className="min-h-[calc(100vh-73px)] flex px-4 py-16 md:px-6 bg-surface/40 pt-28">
 			<div className="container mx-auto max-w-6xl">
-				<h2 className="text-3xl md:text-4xl font-bold text-white mb-12">
-					Projets Récents
-				</h2>
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+				<Reveal className="mb-12">
+					<p className="font-mono text-sm text-accent tracking-widest">02 — WORK</p>
+					<h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mt-2">
+						{t("projects.title")}
+					</h2>
+				</Reveal>
+				<div className="scroll-stage grid grid-cols-1 lg:grid-cols-2 gap-8">
 					{projects.map((project, i) => (
-						<Card 
-							key={i} 
-							className="group bg-gradient-to-br from-slate-900/50 to-slate-800/30 border-slate-700 hover:border-blue-400/50 transition-all duration-500 ease-out hover:transform hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-400/20 flex flex-col relative overflow-hidden"
+						<Reveal key={i} delay={(i % 2) * 90}>
+						<ScrollCard>
+						<TiltCard max={5}>
+						<Card
+							className="group h-full bg-void/60 border-hairline hover:border-accent/50 transition-all duration-500 ease-out hover:-translate-y-1.5 hover:shadow-xl hover:shadow-accent/10 flex flex-col relative overflow-hidden backdrop-blur-sm"
 						>
 							<CardHeader className="p-0">
-								<div className="relative w-full aspect-video rounded-t-lg overflow-hidden">
+								<div className="sweep relative w-full aspect-video rounded-t-lg overflow-hidden">
 									<Image
 										src={project.image}
 										alt={project.title}
@@ -150,7 +158,7 @@ export default function Projects() {
 										className="object-cover transform group-hover:scale-110 transition-transform duration-500 ease-out"
 										sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 									/>
-									<div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+									<div className="absolute inset-0 bg-gradient-to-t from-void via-void/60 to-transparent opacity-85 group-hover:opacity-100 transition-opacity duration-500" />
 									<Badge 
 										variant="outline" 
 										className={`absolute top-4 right-4 backdrop-blur-md shadow-lg font-medium ${getStatusColor(project.status.fr)}`}
@@ -161,10 +169,10 @@ export default function Projects() {
 							</CardHeader>
 							<CardContent className="flex-1 flex flex-col p-6 z-10">
 								<div className="flex-1">
-									<CardTitle className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+									<CardTitle className="text-2xl font-bold text-ink group-hover:text-accent transition-colors duration-300">
 										{project.title}
 									</CardTitle>
-									<CardDescription className="text-slate-300 text-sm mt-3 leading-relaxed line-clamp-3">
+									<CardDescription className="text-ink-dim text-sm mt-3 leading-relaxed line-clamp-3">
 										{project.description[language]}
 									</CardDescription>
 									<div className="flex flex-wrap gap-2 mt-6">
@@ -172,7 +180,7 @@ export default function Projects() {
 											<Badge 
 												key={j} 
 												variant="outline" 
-												className="bg-slate-800/80 border-slate-600/80 text-slate-300 hover:bg-slate-700 hover:border-blue-400/50 transition-colors duration-300 flex items-center backdrop-blur-sm"
+												className="bg-surface/80 border-hairline text-ink-dim hover:border-accent/50 transition-colors duration-300 flex items-center backdrop-blur-sm font-mono"
 											>
 												{techIcons[t]}
 												{t}
@@ -180,11 +188,11 @@ export default function Projects() {
 										))}
 									</div>
 								</div>
-								<div className="mt-6 pt-4 border-t border-slate-700/50">
+								<div className="mt-6 pt-4 border-t border-hairline">
 									{project.status.fr === "En cours" ? (
 										<Button
 											variant="ghost"
-											className="w-full justify-center text-slate-500 cursor-not-allowed opacity-70"
+											className="w-full justify-center text-ink-faint cursor-not-allowed opacity-70"
 											disabled
 										>
 											<ExternalLink className="w-4 h-4 mr-2" />
@@ -193,7 +201,7 @@ export default function Projects() {
 									) : project.status.fr === "Dépôt privé" || project.status.fr === "Privé" ? (
 										<Button
 											variant="ghost"
-											className="w-full justify-center text-slate-500 cursor-not-allowed opacity-70"
+											className="w-full justify-center text-ink-faint cursor-not-allowed opacity-70"
 											disabled
 										>
 											<Lock className="w-4 h-4 mr-2" />
@@ -203,7 +211,7 @@ export default function Projects() {
 										<a href={project.link} target="_blank" rel="noopener noreferrer">
 											<Button
 												variant="ghost"
-												className="w-full justify-center text-blue-400 hover:bg-blue-400/20 hover:text-blue-300 group/btn"
+												className="w-full justify-center text-accent hover:bg-accent/15 hover:text-accent group/btn"
 											>
 												<ExternalLink className="w-4 h-4 mr-2 transition-transform duration-300 group-hover/btn:rotate-45" />
 												{t("projects.viewProject")}
@@ -213,6 +221,9 @@ export default function Projects() {
 								</div>
 							</CardContent>
 						</Card>
+						</TiltCard>
+						</ScrollCard>
+						</Reveal>
 					))}
 				</div>
 			</div>

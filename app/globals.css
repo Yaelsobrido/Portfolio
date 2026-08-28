@@ -8,6 +8,20 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Deep-matter brand tokens */
+  --color-void: var(--void);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-hairline: var(--hairline);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-faint: var(--ink-faint);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-2: var(--accent-2);
+  --color-on-accent: var(--on-accent);
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -26,7 +40,6 @@
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -45,78 +58,313 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  /* ===== Light "matter" — raw tokens ===== */
+  --void: oklch(0.966 0.004 250);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.93 0.006 250);
+  --hairline: oklch(0.2 0.02 260 / 12%);
+
+  --ink: oklch(0.22 0.02 264);
+  --ink-dim: oklch(0.4 0.016 260);
+  --ink-faint: oklch(0.52 0.016 258);
+
+  --accent: oklch(0.6 0.12 210);
+  --accent-soft: oklch(0.6 0.12 210 / 12%);
+  --accent-2: oklch(0.55 0.2 350);
+  --on-accent: oklch(0.99 0 0);
+
+  /* film + vignette, tuned per theme */
+  --grain-opacity: 0.28;
+  --grain-blend: multiply;
+  --edge: oklch(0.55 0.03 260 / 0.1);
+
+  /* ===== Shared shadcn alias mapping (re-resolves per theme) ===== */
+  --background: var(--void);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--accent);
+  --primary-foreground: var(--on-accent);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-2);
+  --muted-foreground: var(--ink-faint);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.62 0.21 25);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--accent);
+
+  --chart-1: var(--accent);
+  --chart-2: var(--accent-2);
+  --chart-3: oklch(0.6 0.13 240);
+  --chart-4: oklch(0.6 0.14 160);
+  --chart-5: oklch(0.65 0.13 90);
+
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--accent);
+  --sidebar-primary-foreground: var(--on-accent);
+  --sidebar-accent: var(--surface-2);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--hairline);
+  --sidebar-ring: var(--accent);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* ===== Deep matter — raw tokens only, aliases inherit ===== */
+  --void: oklch(0.16 0.022 264);
+  --surface: oklch(0.205 0.026 264);
+  --surface-2: oklch(0.245 0.03 264);
+  --hairline: oklch(1 0 0 / 8%);
+
+  --ink: oklch(0.96 0.006 250);
+  --ink-dim: oklch(0.78 0.02 255);
+  --ink-faint: oklch(0.62 0.025 258);
+
+  --accent: oklch(0.83 0.13 195);
+  --accent-soft: oklch(0.83 0.13 195 / 12%);
+  --accent-2: oklch(0.68 0.2 350);
+  --on-accent: oklch(0.16 0.03 240);
+
+  --grain-opacity: 0.5;
+  --grain-blend: overlay;
+  --edge: oklch(0.1 0.02 264 / 0.55);
+
+  --input: oklch(1 0 0 / 14%);
+  --chart-3: oklch(0.72 0.14 240);
+  --chart-4: oklch(0.78 0.16 160);
+  --chart-5: oklch(0.8 0.12 90);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
   body {
     @apply bg-background text-foreground;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  body::before {
+    /* Grain: fixed fractal-noise film over the whole page */
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    mix-blend-mode: var(--grain-blend);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  body::after {
+    /* Vignette / volumetric fall-off toward the edges */
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(130% 90% at 50% 0%, transparent 45%, var(--edge) 100%);
+  }
+  /* keep real content above the film */
+  body > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+@layer utilities {
+  /* Volumetric light bloom — drop behind a hero element */
+  .bloom {
+    background: radial-gradient(
+      circle at 50% 40%,
+      var(--accent-soft) 0%,
+      transparent 60%
+    );
+  }
+
+  /* Dissolves a canvas toward its edges so the graph reads as one cluster
+     instead of scattering into the corners. */
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(
+      ellipse 78% 82% at 50% 46%,
+      #000 48%,
+      transparent 95%
+    );
+    mask-image: radial-gradient(
+      ellipse 78% 82% at 50% 46%,
+      #000 48%,
+      transparent 95%
+    );
+  }
+
+  /* Hero island mask. On phones the island is large enough to show around
+     the portrait, so it is faded out vertically before it reaches the body
+     copy. On wider screens the text sits beside it and a radial fade is
+     enough. */
+  .mask-hero {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 7%,
+      #000 60%,
+      rgba(0, 0, 0, 0.4) 82%,
+      transparent 97%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 7%,
+      #000 60%,
+      rgba(0, 0, 0, 0.4) 82%,
+      transparent 97%
+    );
+  }
+  @media (min-width: 768px) {
+    .mask-hero {
+      -webkit-mask-image: radial-gradient(
+        ellipse 78% 82% at 50% 46%,
+        #000 48%,
+        transparent 95%
+      );
+      mask-image: radial-gradient(
+        ellipse 78% 82% at 50% 46%,
+        #000 48%,
+        transparent 95%
+      );
+    }
+  }
+
+  .text-accent-glow {
+    color: var(--accent);
+    text-shadow: 0 0 22px color-mix(in oklch, var(--accent) 38%, transparent);
+  }
+
+  .hairline-x {
+    border-top: 1px solid var(--hairline);
+  }
+
+  /* Scroll-reveal — toggled by the Reveal component */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* --- Architecture layers (skills page) ---
+     Deliberately plain: the page reuses the Experience timeline vocabulary
+     (rail + icon marker + card). Cards must not animate on their own — an
+     earlier looping colour pulse across them was rejected as inconsistent
+     with every other card on the site. Only the rail dot moves. */
+
+  @keyframes rail-travel {
+    0% {
+      top: 0;
+      opacity: 0;
+    }
+    8% {
+      opacity: 1;
+    }
+    40% {
+      top: calc(100% - 10px);
+      opacity: 1;
+    }
+    48% {
+      top: calc(100% - 10px);
+    }
+    88% {
+      top: 0;
+      opacity: 1;
+    }
+    100% {
+      top: 0;
+      opacity: 0;
+    }
+  }
+  .rail-dot {
+    animation: rail-travel 5s ease-in-out infinite;
+  }
+
+  /* Perspective host for a column of .scroll-card elements. */
+  .scroll-stage {
+    perspective: 1400px;
+    perspective-origin: 50% 50%;
+  }
+
+  /* Scroll-driven 3D bend — vars written by ScrollCard. */
+  .scroll-card {
+    transform: translateZ(var(--sc-tz, 0px))
+      rotateX(var(--sc-rx, 0deg))
+      skewY(var(--sc-skew, 0deg))
+      scale(var(--sc-scale, 1));
+    opacity: var(--sc-opacity, 1);
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+  }
+
+  /* Light sweep that crosses a project image on hover. */
+  .sweep::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 35%,
+      color-mix(in oklch, var(--accent) 45%, transparent) 50%,
+      transparent 65%
+    );
+    transform: translateX(-120%);
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .group:hover .sweep::after {
+    transform: translateX(120%);
+  }
+
+  /* 3D tilt — driven by CSS vars set in TiltCard */
+  .tilt {
+    transform: perspective(900px)
+      rotateX(var(--rx, 0deg))
+      rotateY(var(--ry, 0deg))
+      translateZ(0);
+    transition: transform 0.25s ease-out;
+    transform-style: preserve-3d;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .tilt {
+    transform: none !important;
+  }
+  .scroll-card {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .sweep::after {
+    display: none;
+  }
+  .rail-dot {
+    animation: none !important;
   }
 }

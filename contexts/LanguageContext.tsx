@@ -29,6 +29,12 @@ const translations = {
     // Skills section
     "skills.title": "Compétences Techniques",
     "skills.level": "Niveau",
+    "skills.subtitle": "Ma stack, de l'interface à la base de données.",
+    "skills.request": "requête",
+    "skills.layer.client": "Interface",
+    "skills.layer.api": "API & Métier",
+    "skills.layer.data": "Données",
+    "skills.layer.craft": "Conception & Livraison",
     
     // Experience section
     "experience.title": "Expérience Professionnelle",
@@ -91,6 +97,12 @@ const translations = {
     // Skills section
     "skills.title": "Technical Skills",
     "skills.level": "Level",
+    "skills.subtitle": "My stack, from the interface down to the database.",
+    "skills.request": "request",
+    "skills.layer.client": "Interface",
+    "skills.layer.api": "API & Business logic",
+    "skills.layer.data": "Data",
+    "skills.layer.craft": "Design & Delivery",
     
     // Experience section
     "experience.title": "Professional Experience",

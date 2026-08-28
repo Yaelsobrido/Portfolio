@@ -11,11 +11,11 @@ export default function LanguageSelector() {
       variant="ghost"
       size="sm"
       onClick={() => setLanguage(language === 'fr' ? 'en' : 'fr')}
-      className="px-3 py-1.5 rounded-md
-        text-slate-300 bg-slate-800/50
-        hover:bg-slate-700/50 hover:text-blue-400
+      className="px-3 py-1.5 rounded-md font-mono
+        text-ink-dim bg-surface/60
+        hover:bg-surface-2 hover:text-accent
         transition-all duration-300
-        border border-slate-700 hover:border-blue-400/50"
+        border border-hairline hover:border-accent/50"
     >
       {language.toUpperCase()}
     </Button>

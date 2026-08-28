@@ -1,7 +1,10 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Card, CardContent } from "@/components/ui/card";
+import Reveal from "@/components/effects/Reveal";
+import { Timeline, TimelineItem, TimelineMarker } from "@/components/common/Timeline";
 import {
 	Code2,
 	Database,
@@ -11,74 +14,106 @@ import {
 	GitBranch,
 	Layout,
 	Library,
+	MonitorSmartphone,
+	HardDrive,
+	Boxes,
+	Cpu,
 } from "lucide-react";
+
+interface Layer {
+	key: string;
+	icon: ReactNode;
+	techs: Array<{ name: string; icon: ReactNode }>;
+}
+
+/**
+ * The stack is read top-down: a request enters at the interface and travels
+ * to the data layer. Order matters — do not reshuffle these.
+ */
+const LAYERS: Layer[] = [
+	{
+		key: "client",
+		icon: <MonitorSmartphone className="w-5 h-5 md:w-6 md:h-6" />,
+		techs: [
+			{ name: "HTML/CSS", icon: <Globe className="w-4 h-4" /> },
+			{ name: "Tailwind CSS", icon: <Globe className="w-4 h-4" /> },
+			{ name: "React.js", icon: <Code2 className="w-4 h-4" /> },
+			{ name: "Next.js", icon: <Server className="w-4 h-4" /> },
+		],
+	},
+	{
+		key: "api",
+		icon: <Cpu className="w-5 h-5 md:w-6 md:h-6" />,
+		techs: [
+			{ name: "Laravel", icon: <Library className="w-4 h-4" /> },
+			{ name: "Node.js", icon: <Server className="w-4 h-4" /> },
+			{ name: "PHP", icon: <Code2 className="w-4 h-4" /> },
+			{ name: "JavaScript", icon: <Braces className="w-4 h-4" /> },
+			{ name: "Python", icon: <Code2 className="w-4 h-4" /> },
+		],
+	},
+	{
+		key: "data",
+		icon: <HardDrive className="w-5 h-5 md:w-6 md:h-6" />,
+		techs: [
+			{ name: "MySQL", icon: <Database className="w-4 h-4" /> },
+			{ name: "PostgreSQL", icon: <Database className="w-4 h-4" /> },
+			{ name: "MongoDB", icon: <Database className="w-4 h-4" /> },
+		],
+	},
+	{
+		key: "craft",
+		icon: <Boxes className="w-5 h-5 md:w-6 md:h-6" />,
+		techs: [
+			{ name: "UML/Merise", icon: <Layout className="w-4 h-4" /> },
+			{ name: "Github/Gitlab", icon: <GitBranch className="w-4 h-4" /> },
+		],
+	},
+];
 
 export default function Skills() {
 	const { t } = useLanguage();
 
-	const skills = [
-		// Langages de programmation
-		{ name: "JavaScript", level: 80, icon: <Braces className="w-5 h-5" /> },
-		{ name: "Python", level: 70 , icon: <Code2 className="w-5 h-5" /> },
-		{ name: "PHP", level: 85, icon: <Code2 className="w-5 h-5" /> },
-
-		// Frontend
-		{ name: "HTML/CSS", level: 90, icon: <Globe className="w-5 h-5" /> },
-		{ name: "Tailwind CSS", level: 85, icon: <Globe className="w-5 h-5" /> },
-		{ name: "React.js", level: 85, icon: <Code2 className="w-5 h-5" /> },
-		{ name: "Next.js", level: 80, icon: <Server className="w-5 h-5" /> },
-
-		// Backend & Framework
-		{ name: "Node.js", level: 88, icon: <Server className="w-5 h-5" /> },
-		{ name: "Laravel", level: 90, icon: <Library className="w-5 h-5" /> },
-
-		// Bases de données
-		{ name: "MySQL", level: 85, icon: <Database className="w-5 h-5" /> },
-		{ name: "PostgreSQL", level: 85, icon: <Database className="w-5 h-5" /> },
-		{ name: "MongoDB", level: 80, icon: <Database className="w-5 h-5" /> },
-
-		// Outils & Méthodologies
-		{ name: "Github/Gitlab", level: 88, icon: <GitBranch className="w-5 h-5" /> },
-		{ name: "UML/Merise", level: 85, icon: <Layout className="w-5 h-5" /> },
-	];
-
 	return (
-		<section className="min-h-[calc(100vh-73px)] flex px-4 py-10 md:px-6 bg-slate-800/50 pt-28">
-			<div className="container mx-auto max-w-6xl">
-				<h2 className="text-3xl md:text-4xl font-bold text-white mb-12">
-					{t("skills.title")}
-				</h2>
-				<div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-					{skills.map((skill, i) => (
-						<Card
-							key={i}
-							className="bg-slate-900/50 border-slate-700 hover:border-blue-400/50 transition-colors"
-						>
-							<CardContent className="p-4 md:p-6">
-								<div className="flex space-x-3 mb-4">
-									<div className="text-blue-400">{skill.icon}</div>
-									<h3 className="font-semibold text-white text-sm md:text-base">
-										{skill.name}
+		<section className="min-h-[calc(100vh-73px)] flex px-4 py-16 md:px-6 bg-surface/40 pt-28">
+			<div className="container mx-auto max-w-4xl">
+				<Reveal className="mb-12">
+					<p className="font-mono text-sm text-accent tracking-widest">
+						01 — STACK
+					</p>
+					<h2 className="text-3xl md:text-4xl font-bold text-ink tracking-tight mt-2">
+						{t("skills.title")}
+					</h2>
+					<p className="text-ink-faint mt-3">{t("skills.subtitle")}</p>
+				</Reveal>
+
+				<Timeline>
+					{LAYERS.map((layer, i) => (
+						<TimelineItem key={layer.key} delay={i * 90}>
+							<TimelineMarker>{layer.icon}</TimelineMarker>
+
+							<Card className="bg-void/60 border-hairline backdrop-blur-sm">
+								<CardContent className="p-6 md:p-8">
+									<h3 className="text-xl font-semibold text-ink">
+										{t(`skills.layer.${layer.key}`)}
 									</h3>
-								</div>
-								<div className="space-y-2">
-									<div className="flex justify-between text-xs md:text-sm">
-										<span className="text-slate-400">{t("skills.level")}</span>
-										<span className="text-blue-400">
-											{skill.level}%
-										</span>
+
+									<div className="mt-4 flex flex-wrap gap-2">
+										{layer.techs.map((tech) => (
+											<span
+												key={tech.name}
+												className="inline-flex items-center gap-1.5 rounded-md border border-hairline bg-surface/70 px-2.5 py-1 font-mono text-xs text-ink-dim transition-colors hover:border-accent/50 hover:text-ink"
+											>
+												<span className="text-accent">{tech.icon}</span>
+												{tech.name}
+											</span>
+										))}
 									</div>
-									<div className="w-full bg-slate-700 rounded-full h-1.5 md:h-2">
-										<div
-											className="bg-gradient-to-r from-blue-500 to-purple-500 h-1.5 md:h-2 rounded-full transition-all duration-1000"
-											style={{ width: `${skill.level}%` }}
-										/>
-									</div>
-								</div>
-							</CardContent>
-						</Card>
+								</CardContent>
+							</Card>
+						</TimelineItem>
 					))}
-				</div>
+				</Timeline>
 			</div>
 		</section>
 	);
